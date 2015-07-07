@@ -1,0 +1,37 @@
+{
+  "name": "replace-ids-migration",
+  "version": "1.0.0",
+  "description": "Replace all references to deprecated ids with current ids",
+  "main": "lib/index.js",
+  "bin": "bin/main.js",
+  "scripts": {
+    "test": "tape-dots test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eHealthAfrica/replace-ids-migration.git"
+  },
+  "keywords": [
+    "data",
+    "maintenance",
+    "migration",
+    "couchdb",
+    "pouchdb",
+    "merge",
+    "docs",
+    "cli"
+  ],
+  "author": "Tibor Claassen <tibor@gmah.net> (http://codebeige.net)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/eHealthAfrica/replace-ids-migration/issues"
+  },
+  "homepage": "https://github.com/eHealthAfrica/replace-ids-migration#readme",
+  "devDependencies": {
+    "redtape": "^1.0.0",
+    "tape": "^4.0.0",
+    "tape-dots": "^1.0.0"
+  },
+  "dependencies": {
+  }
+}
