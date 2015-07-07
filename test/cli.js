@@ -17,10 +17,6 @@ function fakeIo () {
          }
 }
 
-function fakePromise() {
-  return new Promise(function (resolve, reject) {})
-}
-
 function fakeJSONStream () {
   var parser = fakeStream()
   return { parse: sinon.stub().returns(parser) }
@@ -87,6 +83,19 @@ test('passes db url to migration', function (t) {
   io.argv[2] = 'http://my-host/my-db'
   cli(io).run()
   parser.emit('finish')
-  t.ok(migrate.calledWith('http://my-host/my-db'))
+  t.deepEqual(migrate.firstCall.args[0], 'http://my-host/my-db')
+  t.end()
+})
+
+test('passes current and deprecated ids to migration', function (t) {
+  cli(io).run()
+  parser.emit('data', { doc: {_id: 'abc'}, ids: ['456', '789'] })
+  parser.emit('data', { doc: {_id: 'def'}, ids: ['123', '765'] })
+  parser.emit('finish')
+  t.deepEqual( migrate.firstCall.args[1]
+             , [ {current: 'abc', deprecate: ['456', '789']}
+               , {current: 'def', deprecate: ['123', '765']}
+               ]
+             )
   t.end()
 })
