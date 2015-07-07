@@ -28,10 +28,14 @@
   },
   "homepage": "https://github.com/eHealthAfrica/replace-ids-migration#readme",
   "devDependencies": {
+    "proxyquire": "^1.6.0",
     "redtape": "^1.0.0",
+    "sinon": "^1.15.4",
     "tape": "^4.0.0",
     "tape-dots": "^1.0.0"
   },
   "dependencies": {
+    "JSONStream": "^1.0.4",
+    "lodash": "^3.10.0"
   }
 }
