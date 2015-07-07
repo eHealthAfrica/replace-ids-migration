@@ -36,6 +36,8 @@
   },
   "dependencies": {
     "JSONStream": "^1.0.4",
-    "lodash": "^3.10.0"
+    "lodash": "^3.10.0",
+    "pouchdb": "^3.6.0",
+    "pouchdb-migrate": "^1.0.1"
   }
 }
