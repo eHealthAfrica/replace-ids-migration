@@ -2,7 +2,6 @@
 var test       = require('redtape')(beforeEach)
   , sinon      = require('sinon')
   , proxyquire = require('proxyquire')
-  , events     = require('events')
   , _          = require('lodash')
 
 function fakeFactory() {
