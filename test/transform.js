@@ -37,18 +37,18 @@ test('replaces multiple patterns', function (t) {
   t.end()
 })
 
-test('does not touch CouchDB internal ids', function (t) {
-  var data = [{ current: '123', deprecate: ['456'] }]
-    , doc  = { _id: '456' }
-  var result = transform(doc, data)
-  t.deepEqual(result, null)
-  t.end()
-})
-
 test('does not touch CouchDB internals', function (t) {
   var data = [{ current: '123', deprecate: ['456'] }]
     , doc  = { source: { _rev: '456' } }
   var result = transform(doc, data)
   t.deepEqual(result, null)
+  t.end()
+})
+
+test('marks deprecated docs for deletion', function (t) {
+  var data = [{ current: '123', deprecate: ['456'] }]
+    , doc  = { _id: '456', _rev: '999', foo: 'bar' }
+  var result = transform(doc, data)
+  t.deepEqual(result, [{_id: '456', _rev: '999', _deleted: true}])
   t.end()
 })
